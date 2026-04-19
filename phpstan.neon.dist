@@ -1,0 +1,11 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    level: 8
+    paths:
+        - src
+    tmpDir: build/phpstan
+    checkOctaneCompatibility: true
+    checkModelProperties: true
