@@ -73,3 +73,19 @@ it('short circuits successful precognitive requests', function () {
         throw $exception;
     }
 })->throws(HttpException::class);
+
+it('registers the precognition hook once per validator instance', function () {
+    $request = Request::create('/', 'POST', []);
+    $request->headers->set('Precognition', 'true');
+    $request->headers->set('Precognition-Validate-Only', 'title');
+    $request->attributes->set('precognitive', true);
+
+    $ruleset = new PrecognitiveRequestRuleset(subject: $request);
+    $validator = $ruleset->getValidator();
+    $afterCallbacks = new ReflectionProperty($validator, 'after');
+    $initialCount = count($afterCallbacks->getValue($validator));
+
+    expect($initialCount)->toBeGreaterThan(0)
+        ->and($ruleset->fails())->toBeTrue()
+        ->and(count($afterCallbacks->getValue($validator)))->toBe($initialCount);
+});

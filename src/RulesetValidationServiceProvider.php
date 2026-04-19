@@ -19,7 +19,7 @@ class RulesetValidationServiceProvider extends ServiceProvider
                 ));
             }
 
-            $resolved->setScenario($attribute->name);
+            $resolved->useScenario($attribute->name);
         });
     }
 }

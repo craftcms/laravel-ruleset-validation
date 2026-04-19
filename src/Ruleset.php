@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CraftCms\RulesetValidation;
 
-use CraftCms\RulesetValidation\Concerns\HasScenarios;
 use CraftCms\RulesetValidation\Contracts\ValidatesWithRuleset;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Access\Response;
@@ -32,8 +31,6 @@ use RuntimeException;
  */
 class Ruleset
 {
-    use HasScenarios;
-
     /**
      * The URI to redirect to if validation fails.
      */
@@ -65,6 +62,18 @@ class Ruleset
     protected ?Validator $validator = null;
 
     /**
+     * The active validation scenario.
+     */
+    protected string $scenario = 'default';
+
+    /**
+     * The attributes currently being validated.
+     *
+     * @var array<string>|null
+     */
+    protected ?array $validationAttributes = null;
+
+    /**
      * The container instance.
      */
     protected ?Container $container = null;
@@ -91,28 +100,60 @@ class Ruleset
      */
     public function validate(): array
     {
-        $subject = $this->resolveSubject();
+        $this->runValidation(throw: true);
 
-        $this->prepareForValidation();
-
-        if (! $this->passesAuthorization()) {
-            $this->failedAuthorization();
-        }
-
-        $instance = $this->getValidatorInstance();
-
-        if ($subject instanceof Request && $subject->isPrecognitive()) {
-            $instance->after(Precognition::afterValidationHook($subject));
-        }
-
-        if ($instance->fails()) {
-            $this->failedValidation($instance);
-        }
-
-        $this->passedValidation();
+        $instance = $this->getValidator();
 
         /** @var array<string, mixed> */
         return $instance->validated();
+    }
+
+    /**
+     * Determine if the current ruleset passes validation without throwing.
+     */
+    public function passes(): bool
+    {
+        return $this->runValidation(throw: false);
+    }
+
+    /**
+     * Determine if the current ruleset fails validation without throwing.
+     */
+    public function fails(): bool
+    {
+        return ! $this->passes();
+    }
+
+    /**
+     * Limit the next validation-related call to the given attributes.
+     *
+     * @param  array<string>|string  $attributes
+     */
+    public function only(array|string $attributes): static
+    {
+        $ruleset = clone $this;
+        $ruleset->validationAttributes = Arr::wrap($attributes);
+        $ruleset->validator = null;
+
+        return $ruleset;
+    }
+
+    public function useScenario(string $scenario): static
+    {
+        $this->scenario = $scenario;
+        $this->validator = null;
+
+        return $this;
+    }
+
+    public function getScenario(): string
+    {
+        return $this->scenario;
+    }
+
+    public function inScenarios(string ...$scenarios): bool
+    {
+        return in_array($this->scenario, $scenarios, true);
     }
 
     /**
@@ -134,7 +175,7 @@ class Ruleset
     /**
      * Get the validator instance for the ruleset.
      */
-    protected function getValidatorInstance(): Validator
+    public function getValidator(): Validator
     {
         if ($this->validator) {
             return $this->validator;
@@ -149,6 +190,18 @@ class Ruleset
             $validator = $container->call($this->validator(...), compact('factory'));
         } else {
             $validator = $this->createDefaultValidator($factory);
+        }
+
+        if ($this->validationAttributes !== null) {
+            $validator->setRules(
+                Arr::only($validator->getRulesWithoutPlaceholders(), $this->validationAttributes),
+            );
+        }
+
+        $subject = $this->resolveSubject();
+
+        if ($subject instanceof Request && $subject->isPrecognitive()) {
+            $validator->after(Precognition::afterValidationHook($subject));
         }
 
         if (method_exists($this, 'withValidator')) {
@@ -406,8 +459,8 @@ class Ruleset
     public function safe(?array $keys = null): ValidatedInput|array
     {
         return is_array($keys)
-            ? $this->getValidatorInstance()->safe()->only($keys)
-            : $this->getValidatorInstance()->safe();
+            ? $this->getValidator()->safe()->only($keys)
+            : $this->getValidator()->safe();
     }
 
     /**
@@ -417,7 +470,7 @@ class Ruleset
      */
     public function validated(array|int|string|null $key = null, mixed $default = null): mixed
     {
-        return data_get($this->getValidatorInstance()->validated(), $key, $default);
+        return data_get($this->getValidator()->validated(), $key, $default);
     }
 
     /**
@@ -500,5 +553,33 @@ class Ruleset
     public static function flushState(): void
     {
         static::$globalFailOnUnknownFields = false;
+    }
+
+    /**
+     * Run the validation lifecycle for the given attributes.
+     */
+    protected function runValidation(bool $throw = true): bool
+    {
+        $this->resolveSubject();
+
+        $this->prepareForValidation();
+
+        if (! $this->passesAuthorization()) {
+            $this->failedAuthorization();
+        }
+
+        $instance = $this->getValidator();
+
+        if ($instance->fails()) {
+            if ($throw) {
+                $this->failedValidation($instance);
+            }
+
+            return false;
+        }
+
+        $this->passedValidation();
+
+        return true;
     }
 }

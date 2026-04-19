@@ -10,7 +10,7 @@ it('tracks the active scenario', function () {
     expect($ruleset->getScenario())->toBe('default')
         ->and($ruleset->inScenarios('default'))->toBeTrue();
 
-    $ruleset->setScenario('none');
+    $ruleset->useScenario('none');
 
     expect($ruleset->getScenario())->toBe('none')
         ->and($ruleset->inScenarios('none'))->toBeTrue();
@@ -19,5 +19,12 @@ it('tracks the active scenario', function () {
 it('can validate using a scenario', function () {
     $ruleset = (new ScenarioValidatable)->ruleset;
 
-    expect($ruleset->setScenario('none')->validate())->toBe([]);
+    expect($ruleset->useScenario('none')->validate())->toBe([]);
+});
+
+it('rebuilds the validator when the scenario changes', function () {
+    $ruleset = (new ScenarioValidatable)->ruleset;
+
+    expect($ruleset->fails())->toBeTrue()
+        ->and($ruleset->useScenario('none')->validate())->toBe([]);
 });

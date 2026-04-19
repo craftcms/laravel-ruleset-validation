@@ -110,6 +110,26 @@ $data = new CreatePostData(
 $validated = $data->ruleset->validate();
 ```
 
+You can also validate only a subset of attributes:
+
+```php
+$validated = $data->ruleset
+    ->only(['title', 'slug'])
+    ->validate();
+```
+
+And if you need a non-throwing flow for object-backed validation:
+
+```php
+$ruleset = $data->ruleset->only(['title']);
+
+if ($ruleset->fails()) {
+    $validator = $ruleset->getValidator();
+
+    // Inspect $validator->errors()
+}
+```
+
 ### 2. You can inject a ruleset directly for a request
 
 If you want `FormRequest` behavior without a `FormRequest` subclass, type-hint the ruleset in your controller action and let Laravel resolve it.
@@ -179,13 +199,13 @@ class PostRuleset extends Ruleset
 
 ```php
 $validated = $data->ruleset
-    ->setScenario(PostRuleset::SCENARIO_DRAFT)
+    ->useScenario(PostRuleset::SCENARIO_DRAFT)
     ->validate();
 ```
 
 Available helpers:
 
-- `setScenario(string $scenario): static`
+- `useScenario(string $scenario): static`
 - `getScenario(): string`
 - `inScenarios(string ...$scenarios): bool`
 
@@ -228,6 +248,8 @@ When a ruleset is validating an `Illuminate\Http\Request`, the Laravel docs abov
 This package mirrors that behavior, with a few small differences:
 
 - `validate()` returns the validated payload directly, like `$request->validate(...)`.
+- `only(...)` returns a scoped clone that validates only a subset of attributes, such as `$ruleset->only('title')->validate()`.
+- `passes()`, `fails()`, and `getValidator()` are available when you want a non-throwing validation flow.
 - Request-backed rulesets may be injected directly into controller actions.
 - For object-backed validation, data comes from `validationData()` instead of request input.
 - Rulesets can be selected with either the `#[Ruleset(...)]` attribute or a `ruleset(): string` method on the validatable object.
