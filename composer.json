@@ -1,5 +1,5 @@
 {
-    "name": "craft/laravel-ruleset-validation",
+    "name": "craftcms/laravel-ruleset-validation",
     "description": "Validate requests and objects with reusable Laravel rulesets.",
     "keywords": [
         "craftcms",
