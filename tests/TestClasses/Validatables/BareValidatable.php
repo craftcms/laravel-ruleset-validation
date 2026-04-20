@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Craft\RulesetValidation\Tests\TestClasses\Validatables;
+namespace CraftCms\RulesetValidation\Tests\TestClasses\Validatables;
 
-use Craft\RulesetValidation\Concerns\HasRuleset;
-use Craft\RulesetValidation\Contracts\ValidatesWithRuleset;
+use CraftCms\RulesetValidation\Concerns\HasRuleset;
+use CraftCms\RulesetValidation\Contracts\ValidatesWithRuleset;
 
 class BareValidatable implements ValidatesWithRuleset
 {

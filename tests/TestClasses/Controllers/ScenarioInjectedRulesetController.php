@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Craft\RulesetValidation\Tests\TestClasses\Controllers;
+namespace CraftCms\RulesetValidation\Tests\TestClasses\Controllers;
 
-use Craft\RulesetValidation\Attributes\Scenario;
-use Craft\RulesetValidation\Tests\TestClasses\Rulesets\RequestScenarioRuleset;
+use CraftCms\RulesetValidation\Attributes\Scenario;
+use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\RequestScenarioRuleset;
 use Illuminate\Http\JsonResponse;
 
 class ScenarioInjectedRulesetController

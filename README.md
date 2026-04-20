@@ -19,7 +19,7 @@ That makes it useful for DTOs, actions, domain objects, and controllers that wan
 Install the package via Composer:
 
 ```bash
-composer require craft/laravel-ruleset-validation
+composer require craftcms/laravel-ruleset-validation
 ```
 
 The package uses Laravel package auto-discovery, so no manual service provider registration is required.
@@ -50,9 +50,9 @@ Create a class that implements `ValidatesWithRuleset`, add the `HasRuleset` trai
 namespace App\Data;
 
 use App\Rulesets\CreatePostRuleset;
-use Craft\RulesetValidation\Attributes\Ruleset;
-use Craft\RulesetValidation\Concerns\HasRuleset;
-use Craft\RulesetValidation\Contracts\ValidatesWithRuleset;
+use CraftCms\RulesetValidation\Attributes\Ruleset;
+use CraftCms\RulesetValidation\Concerns\HasRuleset;
+use CraftCms\RulesetValidation\Contracts\ValidatesWithRuleset;
 
 #[Ruleset(CreatePostRuleset::class)]
 class CreatePostData implements ValidatesWithRuleset
@@ -83,7 +83,7 @@ Then define the ruleset:
 
 namespace App\Rulesets;
 
-use Craft\RulesetValidation\Ruleset;
+use CraftCms\RulesetValidation\Ruleset;
 
 class CreatePostRuleset extends Ruleset
 {
@@ -139,7 +139,7 @@ If you want `FormRequest` behavior without a `FormRequest` subclass, type-hint t
 
 namespace App\Rulesets;
 
-use Craft\RulesetValidation\Ruleset;
+use CraftCms\RulesetValidation\Ruleset;
 
 class StorePostRuleset extends Ruleset
 {
@@ -213,7 +213,7 @@ When injecting a ruleset into a controller, you can also set the scenario with a
 
 ```php
 use App\Rulesets\PostRuleset;
-use Craft\RulesetValidation\Attributes\Scenario;
+use CraftCms\RulesetValidation\Attributes\Scenario;
 
 class PostController
 {
@@ -262,7 +262,7 @@ You can associate a validatable object with a ruleset in two ways.
 
 ```php
 use App\Rulesets\CreatePostRuleset;
-use Craft\RulesetValidation\Attributes\Ruleset;
+use CraftCms\RulesetValidation\Attributes\Ruleset;
 
 #[Ruleset(CreatePostRuleset::class)]
 class CreatePostData implements ValidatesWithRuleset
@@ -276,8 +276,8 @@ class CreatePostData implements ValidatesWithRuleset
 ```php
 use App\Rulesets\AdminPostRuleset;
 use App\Rulesets\CreatePostRuleset;
-use Craft\RulesetValidation\Concerns\HasRuleset;
-use Craft\RulesetValidation\Contracts\ValidatesWithRuleset;
+use CraftCms\RulesetValidation\Concerns\HasRuleset;
+use CraftCms\RulesetValidation\Contracts\ValidatesWithRuleset;
 
 class CreatePostData implements ValidatesWithRuleset
 {

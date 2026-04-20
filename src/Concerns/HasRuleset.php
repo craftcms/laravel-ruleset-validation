@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Craft\RulesetValidation\Concerns;
+namespace CraftCms\RulesetValidation\Concerns;
 
-use Craft\RulesetValidation\Attributes\Ruleset as RulesetAttribute;
-use Craft\RulesetValidation\Ruleset;
+use CraftCms\RulesetValidation\Attributes\Ruleset as RulesetAttribute;
+use CraftCms\RulesetValidation\Ruleset;
 use Illuminate\Support\Traits\ReadsClassAttributes;
 
 /** @phpstan-ignore trait.unused */

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Craft\RulesetValidation\Tests\TestClasses\Rulesets\SubsetAwareRequestRuleset;
-use Craft\RulesetValidation\Tests\TestClasses\Validatables\MultiFieldValidatable;
+use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\SubsetAwareRequestRuleset;
+use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\MultiFieldValidatable;
 use Illuminate\Http\Request;
 
 it('filters object validation to the requested attributes', function () {

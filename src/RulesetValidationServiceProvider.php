@@ -1,8 +1,8 @@
 <?php
 
-namespace Craft\RulesetValidation;
+namespace CraftCms\RulesetValidation;
 
-use Craft\RulesetValidation\Attributes\Scenario;
+use CraftCms\RulesetValidation\Attributes\Scenario;
 use Illuminate\Support\ServiceProvider;
 use InvalidArgumentException;
 

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Craft\RulesetValidation\Contracts;
+namespace CraftCms\RulesetValidation\Contracts;
 
-use Craft\RulesetValidation\Ruleset;
+use CraftCms\RulesetValidation\Ruleset;
 
 interface ValidatesWithRuleset
 {

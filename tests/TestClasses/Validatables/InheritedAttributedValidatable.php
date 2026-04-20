@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Craft\RulesetValidation\Tests\TestClasses\Validatables;
+namespace CraftCms\RulesetValidation\Tests\TestClasses\Validatables;
 
 class InheritedAttributedValidatable extends AttributedValidatable {}

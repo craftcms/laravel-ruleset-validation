@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Craft\RulesetValidation\Tests\TestClasses\Rulesets;
+namespace CraftCms\RulesetValidation\Tests\TestClasses\Rulesets;
 
-use Craft\RulesetValidation\Ruleset;
+use CraftCms\RulesetValidation\Ruleset;
 use Illuminate\Foundation\Http\Attributes\ErrorBag;
 use Illuminate\Foundation\Http\Attributes\RedirectTo;
 

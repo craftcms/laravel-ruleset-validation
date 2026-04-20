@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Craft\RulesetValidation\Tests\TestClasses\Validatables\ScenarioValidatable;
+use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\ScenarioValidatable;
 
 it('tracks the active scenario', function () {
     $ruleset = (new ScenarioValidatable)->ruleset;

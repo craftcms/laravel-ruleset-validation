@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Craft\RulesetValidation\Tests\TestClasses\Rulesets;
+namespace CraftCms\RulesetValidation\Tests\TestClasses\Rulesets;
 
 use Illuminate\Auth\Access\Response;
 
