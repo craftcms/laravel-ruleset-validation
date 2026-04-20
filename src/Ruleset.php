@@ -135,6 +135,7 @@ class Ruleset
     public function only(array|string $attributes): static
     {
         $this->validationAttributes = Arr::wrap($attributes);
+        $this->validator = null;
 
         return $this;
     }
