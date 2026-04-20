@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Tests\TestClasses\Controllers\PostController;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\RedirectActionRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\RedirectingRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\RedirectRouteRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\StopOnFirstFailureRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Controllers\PostController;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\RedirectActionRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\RedirectingRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\RedirectRouteRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\StopOnFirstFailureRequestRuleset;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

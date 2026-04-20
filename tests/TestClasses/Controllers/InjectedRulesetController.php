@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CraftCms\RulesetValidation\Tests\TestClasses\Controllers;
+namespace Craft\RulesetValidation\Tests\TestClasses\Controllers;
 
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\RequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\RequestRuleset;
 use Illuminate\Http\JsonResponse;
 
 class InjectedRulesetController

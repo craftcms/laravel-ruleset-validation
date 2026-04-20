@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Ruleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\RequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\UnknownFieldsOptOutRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\UnknownFieldsRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\WildcardUnknownFieldsRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
+use Craft\RulesetValidation\Ruleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\RequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\UnknownFieldsOptOutRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\UnknownFieldsRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\WildcardUnknownFieldsRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

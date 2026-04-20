@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\BasicRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
-use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\BareValidatable;
-use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\DynamicRulesetValidatable;
-use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\InheritedAttributedValidatable;
-use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\InvalidRulesetValidatable;
-use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\NamedAttributedValidatable;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\BasicRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
+use Craft\RulesetValidation\Tests\TestClasses\Validatables\BareValidatable;
+use Craft\RulesetValidation\Tests\TestClasses\Validatables\DynamicRulesetValidatable;
+use Craft\RulesetValidation\Tests\TestClasses\Validatables\InheritedAttributedValidatable;
+use Craft\RulesetValidation\Tests\TestClasses\Validatables\InvalidRulesetValidatable;
+use Craft\RulesetValidation\Tests\TestClasses\Validatables\NamedAttributedValidatable;
 
 it('returns false when no ruleset is configured', function () {
     expect((new BareValidatable)->ruleset)->toBeFalse();

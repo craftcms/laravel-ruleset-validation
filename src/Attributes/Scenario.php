@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CraftCms\RulesetValidation\Attributes;
+namespace Craft\RulesetValidation\Attributes;
 
 use Attribute;
 

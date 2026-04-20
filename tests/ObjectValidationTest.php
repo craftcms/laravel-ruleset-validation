@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
+use Craft\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
 use Illuminate\Support\ValidatedInput;
 use Illuminate\Validation\ValidationException;
 

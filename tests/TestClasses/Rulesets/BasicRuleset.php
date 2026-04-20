@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CraftCms\RulesetValidation\Tests\TestClasses\Rulesets;
+namespace Craft\RulesetValidation\Tests\TestClasses\Rulesets;
 
-use CraftCms\RulesetValidation\Ruleset;
+use Craft\RulesetValidation\Ruleset;
 
 class BasicRuleset extends Ruleset
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CraftCms\RulesetValidation;
+namespace Craft\RulesetValidation;
 
-use CraftCms\RulesetValidation\Contracts\ValidatesWithRuleset;
+use Craft\RulesetValidation\Contracts\ValidatesWithRuleset;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\Container\Container;

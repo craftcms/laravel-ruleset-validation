@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\PrecognitiveRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\RequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\PrecognitiveRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\RequestRuleset;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;

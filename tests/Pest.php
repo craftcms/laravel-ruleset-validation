@@ -1,7 +1,7 @@
 <?php
 
-use CraftCms\RulesetValidation\Ruleset;
-use CraftCms\RulesetValidation\Tests\TestCase;
+use Craft\RulesetValidation\Ruleset;
+use Craft\RulesetValidation\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
 

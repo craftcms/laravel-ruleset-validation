@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace CraftCms\RulesetValidation\Tests\TestClasses\Validatables;
+namespace Craft\RulesetValidation\Tests\TestClasses\Validatables;
 
-use CraftCms\RulesetValidation\Attributes\Ruleset as RulesetAttribute;
-use CraftCms\RulesetValidation\Concerns\HasRuleset;
-use CraftCms\RulesetValidation\Contracts\ValidatesWithRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\ScenarioRuleset;
+use Craft\RulesetValidation\Attributes\Ruleset as RulesetAttribute;
+use Craft\RulesetValidation\Concerns\HasRuleset;
+use Craft\RulesetValidation\Contracts\ValidatesWithRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\ScenarioRuleset;
 
 #[RulesetAttribute(ScenarioRuleset::class)]
 class ScenarioValidatable implements ValidatesWithRuleset

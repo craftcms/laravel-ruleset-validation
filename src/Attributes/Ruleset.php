@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace CraftCms\RulesetValidation\Attributes;
+namespace Craft\RulesetValidation\Attributes;
 
 use Attribute;
-use CraftCms\RulesetValidation\Contracts\ValidatesWithRuleset;
-use CraftCms\RulesetValidation\Ruleset as BaseRuleset;
+use Craft\RulesetValidation\Contracts\ValidatesWithRuleset;
+use Craft\RulesetValidation\Ruleset as BaseRuleset;
 
 #[Attribute(Attribute::TARGET_CLASS)]
 class Ruleset

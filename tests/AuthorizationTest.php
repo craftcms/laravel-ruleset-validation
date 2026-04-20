@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\AuthorizedRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\DeniedRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\UnauthorizedRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\AuthorizedRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\DeniedRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\UnauthorizedRequestRuleset;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 

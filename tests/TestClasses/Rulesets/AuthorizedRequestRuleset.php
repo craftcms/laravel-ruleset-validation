@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CraftCms\RulesetValidation\Tests\TestClasses\Rulesets;
+namespace Craft\RulesetValidation\Tests\TestClasses\Rulesets;
 
 class AuthorizedRequestRuleset extends RequestRuleset
 {

@@ -1,8 +1,9 @@
 {
-    "name": "craftcms/laravel-ruleset-validation",
+    "name": "craft/laravel-ruleset-validation",
     "description": "Validate requests and objects with reusable Laravel rulesets.",
     "keywords": [
         "craftcms",
+        "craft",
         "laravel",
         "rulesets",
         "validation"
@@ -30,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CraftCms\\RulesetValidation\\": "src/"
+            "Craft\\RulesetValidation\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CraftCms\\RulesetValidation\\Tests\\": "tests/"
+            "Craft\\RulesetValidation\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -56,7 +57,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CraftCms\\RulesetValidation\\RulesetValidationServiceProvider"
+                "Craft\\RulesetValidation\\RulesetValidationServiceProvider"
             ]
         }
     },

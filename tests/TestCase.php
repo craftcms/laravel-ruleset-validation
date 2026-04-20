@@ -1,12 +1,12 @@
 <?php
 
-namespace CraftCms\RulesetValidation\Tests;
+namespace Craft\RulesetValidation\Tests;
 
-use CraftCms\RulesetValidation\RulesetValidationServiceProvider;
-use CraftCms\RulesetValidation\Tests\TestClasses\Controllers\InjectedHookedRulesetController;
-use CraftCms\RulesetValidation\Tests\TestClasses\Controllers\InjectedRulesetController;
-use CraftCms\RulesetValidation\Tests\TestClasses\Controllers\PostController;
-use CraftCms\RulesetValidation\Tests\TestClasses\Controllers\ScenarioInjectedRulesetController;
+use Craft\RulesetValidation\RulesetValidationServiceProvider;
+use Craft\RulesetValidation\Tests\TestClasses\Controllers\InjectedHookedRulesetController;
+use Craft\RulesetValidation\Tests\TestClasses\Controllers\InjectedRulesetController;
+use Craft\RulesetValidation\Tests\TestClasses\Controllers\PostController;
+use Craft\RulesetValidation\Tests\TestClasses\Controllers\ScenarioInjectedRulesetController;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

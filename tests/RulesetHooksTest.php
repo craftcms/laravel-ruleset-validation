@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Ruleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\AfterHookRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\CustomMessageRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\CustomValidatorRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\HookedRequestRuleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\WithValidatorRequestRuleset;
+use Craft\RulesetValidation\Ruleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\AfterHookRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\CustomMessageRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\CustomValidatorRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\HookedRequestRuleset;
+use Craft\RulesetValidation\Tests\TestClasses\Rulesets\WithValidatorRequestRuleset;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

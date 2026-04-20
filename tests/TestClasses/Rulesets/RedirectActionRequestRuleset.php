@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CraftCms\RulesetValidation\Tests\TestClasses\Rulesets;
+namespace Craft\RulesetValidation\Tests\TestClasses\Rulesets;
 
-use CraftCms\RulesetValidation\Ruleset;
-use CraftCms\RulesetValidation\Tests\TestClasses\Controllers\PostController;
+use Craft\RulesetValidation\Ruleset;
+use Craft\RulesetValidation\Tests\TestClasses\Controllers\PostController;
 
 class RedirectActionRequestRuleset extends Ruleset
 {
