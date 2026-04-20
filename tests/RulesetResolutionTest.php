@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Ruleset;
 use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\BasicRuleset;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\BareValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\DynamicRulesetValidatable;
+use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\InheritedAttributedValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\InvalidRulesetValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\NamedAttributedValidatable;
 
-it('returns the base ruleset when none is configured', function () {
-    expect((new BareValidatable)->ruleset)->toBeInstanceOf(Ruleset::class);
+it('returns false when no ruleset is configured', function () {
+    expect((new BareValidatable)->ruleset)->toBeFalse();
 });
 
 it('resolves the ruleset from a class attribute', function () {
@@ -20,6 +20,10 @@ it('resolves the ruleset from a class attribute', function () {
 
 it('resolves the ruleset from a named class attribute argument', function () {
     expect((new NamedAttributedValidatable)->ruleset)->toBeInstanceOf(BasicRuleset::class);
+});
+
+it('resolves the ruleset from an inherited class attribute', function () {
+    expect((new InheritedAttributedValidatable)->ruleset)->toBeInstanceOf(BasicRuleset::class);
 });
 
 it('resolves the ruleset from a ruleset method', function () {
@@ -32,6 +36,6 @@ it('memoizes the resolved ruleset instance', function () {
     expect($validatable->ruleset)->toBe($validatable->ruleset);
 });
 
-it('throws when the resolved ruleset class is invalid', function () {
-    new InvalidRulesetValidatable()->ruleset;
-})->throws(InvalidArgumentException::class, 'The rules class must be an instance of '.Ruleset::class);
+it('returns false when the resolved ruleset class is invalid', function () {
+    expect((new InvalidRulesetValidatable)->ruleset)->toBeFalse();
+});

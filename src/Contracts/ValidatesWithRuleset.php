@@ -8,8 +8,8 @@ use CraftCms\RulesetValidation\Ruleset;
 
 interface ValidatesWithRuleset
 {
-    /** @var Ruleset<static> */
-    public Ruleset $ruleset { get; }
+    /** @var Ruleset<static>|false */
+    public Ruleset|false $ruleset { get; }
 
     /**
      * @return array<string, mixed>

@@ -20,6 +20,7 @@ use Illuminate\Foundation\Precognition;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Traits\Conditionable;
 use Illuminate\Support\ValidatedInput;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Validator;
@@ -31,6 +32,8 @@ use RuntimeException;
  */
 class Ruleset
 {
+    use Conditionable;
+
     /**
      * The URI to redirect to if validation fails.
      */
@@ -131,11 +134,9 @@ class Ruleset
      */
     public function only(array|string $attributes): static
     {
-        $ruleset = clone $this;
-        $ruleset->validationAttributes = Arr::wrap($attributes);
-        $ruleset->validator = null;
+        $this->validationAttributes = Arr::wrap($attributes);
 
-        return $ruleset;
+        return $this;
     }
 
     public function useScenario(string $scenario): static

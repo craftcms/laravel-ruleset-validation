@@ -23,22 +23,11 @@ it('supports non throwing object validation for requested attributes', function 
     $ruleset = (new MultiFieldValidatable([
         'title' => 'Valid title',
     ]))->ruleset;
-    $slugRuleset = $ruleset->only(['slug']);
+    $slugRuleset = (clone $ruleset)->only(['slug']);
 
     expect($ruleset->only(['title'])->passes())->toBeTrue()
         ->and($slugRuleset->fails())->toBeTrue()
         ->and($slugRuleset->getValidator()->errors()->has('slug'))->toBeTrue();
-});
-
-it('returns a scoped clone without mutating the original ruleset', function () {
-    $ruleset = (new MultiFieldValidatable([
-        'title' => 'Valid title',
-    ]))->ruleset;
-    $scopedRuleset = $ruleset->only(['title']);
-
-    expect($scopedRuleset)->not->toBe($ruleset)
-        ->and($scopedRuleset->passes())->toBeTrue()
-        ->and($ruleset->fails())->toBeTrue();
 });
 
 it('passes the requested attributes into prepareForValidation', function () {
