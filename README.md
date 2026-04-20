@@ -178,20 +178,20 @@ $ruleset = new StorePostRuleset(subject: $request);
 Rulesets include a lightweight scenario API that `FormRequest` does not provide.
 
 ```php
+use Illuminate\Validation\Rule;
+
 class PostRuleset extends Ruleset
 {
     public const SCENARIO_DRAFT = 'draft';
     
     public function rules(): array
     {
-        if ($this->inScenarios(self::SCENARIO_DRAFT)) {
-            return [
-                'title' => ['nullable', 'string', 'max:255'],
-            ];
-        }
-
         return [
-            'title' => ['required', 'string', 'max:255'],
+            'title' => [
+                Rule::requiredIf($this->inScenarios(self::SCENARIO_DRAFT)),
+                'string',
+                'max:255'
+            ],
         ];
     }
 }
