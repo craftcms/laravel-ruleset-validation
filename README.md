@@ -1,9 +1,9 @@
 # Laravel Ruleset Validation
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/craft/laravel-ruleset-validation.svg?style=flat-square)](https://packagist.org/packages/craft/laravel-ruleset-validation)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/craft/laravel-ruleset-validation/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/craft/laravel-ruleset-validation/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/craft/laravel-ruleset-validation/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/craft/laravel-ruleset-validation/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/craft/laravel-ruleset-validation.svg?style=flat-square)](https://packagist.org/packages/craft/laravel-ruleset-validation)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/craftcms/laravel-ruleset-validation.svg?style=flat-square)](https://packagist.org/packages/craftcms/laravel-ruleset-validation)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/craftcms/laravel-ruleset-validation/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/craftcms/laravel-ruleset-validation/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/craftcms/laravel-ruleset-validation/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/craftcms/laravel-ruleset-validation/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/craftcms/laravel-ruleset-validation.svg?style=flat-square)](https://packagist.org/packages/craftcms/laravel-ruleset-validation)
 
 Move validation out of controllers, form requests, and ad hoc validators into reusable ruleset objects.
 
