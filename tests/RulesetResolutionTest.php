@@ -3,11 +3,13 @@
 declare(strict_types=1);
 
 use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\BasicRuleset;
+use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\AlternateRuleset;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\BareValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\DynamicRulesetValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\InheritedAttributedValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\InvalidRulesetValidatable;
+use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\MethodOverridesInheritedAttributedValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\NamedAttributedValidatable;
 
 it('returns false when no ruleset is configured', function () {
@@ -24,6 +26,10 @@ it('resolves the ruleset from a named class attribute argument', function () {
 
 it('resolves the ruleset from an inherited class attribute', function () {
     expect((new InheritedAttributedValidatable)->ruleset)->toBeInstanceOf(BasicRuleset::class);
+});
+
+it('prefers a ruleset method over an inherited class attribute', function () {
+    expect((new MethodOverridesInheritedAttributedValidatable)->ruleset)->toBeInstanceOf(AlternateRuleset::class);
 });
 
 it('resolves the ruleset from a ruleset method', function () {
