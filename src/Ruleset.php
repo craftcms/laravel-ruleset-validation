@@ -97,6 +97,47 @@ class Ruleset
     ) {}
 
     /**
+     * Prepare the ruleset for serialization.
+     *
+     * Runtime state is rebuilt lazily after unserialization.
+     *
+     * @return array<string, mixed>
+     */
+    public function __serialize(): array
+    {
+        return [
+            'subject' => $this->subject,
+            'redirect' => $this->redirect,
+            'redirectRoute' => $this->redirectRoute,
+            'redirectAction' => $this->redirectAction,
+            'errorBag' => $this->errorBag,
+            'stopOnFirstFailure' => $this->stopOnFirstFailure,
+            'scenario' => $this->scenario,
+            'validationAttributes' => $this->validationAttributes,
+        ];
+    }
+
+    /**
+     * Restore the ruleset after unserialization.
+     *
+     * @param  array<string, mixed>  $data
+     */
+    public function __unserialize(array $data): void
+    {
+        $this->subject = $data['subject'];
+        $this->redirect = $data['redirect'];
+        $this->redirectRoute = $data['redirectRoute'];
+        $this->redirectAction = $data['redirectAction'];
+        $this->errorBag = $data['errorBag'];
+        $this->stopOnFirstFailure = $data['stopOnFirstFailure'];
+        $this->scenario = $data['scenario'];
+        $this->validationAttributes = $data['validationAttributes'];
+        $this->validator = null;
+        $this->container = null;
+        $this->redirector = null;
+    }
+
+    /**
      * Validate the current ruleset and return the validated payload.
      *
      * @return array<string, mixed>
