@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\BasicRuleset;
 use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\AlternateRuleset;
+use CraftCms\RulesetValidation\Tests\TestClasses\Rulesets\BasicRuleset;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\AttributedValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\BareValidatable;
 use CraftCms\RulesetValidation\Tests\TestClasses\Validatables\DynamicRulesetValidatable;
