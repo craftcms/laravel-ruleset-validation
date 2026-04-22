@@ -28,3 +28,26 @@ it('rebuilds the validator when the scenario changes', function () {
     expect($ruleset->fails())->toBeTrue()
         ->and($ruleset->useScenario('none')->validate())->toBe([]);
 });
+
+it('temporarily uses a scenario within a callback and restores the previous scenario', function () {
+    $ruleset = (new ScenarioValidatable)->ruleset->useScenario('none');
+
+    $fails = $ruleset->withScenario('default', fn () => $ruleset->fails());
+
+    expect($fails)->toBeTrue()
+        ->and($ruleset->getScenario())->toBe('none')
+        ->and($ruleset->validate())->toBe([]);
+});
+
+it('restores the previous scenario when the callback throws', function () {
+    $ruleset = (new ScenarioValidatable)->ruleset->useScenario('none');
+
+    expect(function () use ($ruleset) {
+        $ruleset->withScenario('default', function (): void {
+            throw new \RuntimeException('Boom');
+        });
+    })->toThrow(\RuntimeException::class);
+
+    expect($ruleset->getScenario())->toBe('none')
+        ->and($ruleset->validate())->toBe([]);
+});

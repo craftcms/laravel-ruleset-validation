@@ -203,9 +203,19 @@ $validated = $data->ruleset
     ->validate();
 ```
 
+If you only want to switch scenarios for one operation, use `withScenario()`. The previous scenario is restored after the callback returns or throws.
+
+```php
+$validated = $data->ruleset->withScenario(
+    PostRuleset::SCENARIO_DRAFT,
+    fn () => $data->ruleset->validate(),
+);
+```
+
 Available helpers:
 
 - `useScenario(string $scenario): static`
+- `withScenario(string $scenario, Closure $callback): mixed`
 - `getScenario(): string`
 - `inScenarios(string ...$scenarios): bool`
 

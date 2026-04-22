@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CraftCms\RulesetValidation;
 
+use Closure;
 use CraftCms\RulesetValidation\Contracts\ValidatesWithRuleset;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Access\Response;
@@ -187,6 +188,19 @@ class Ruleset
         $this->validator = null;
 
         return $this;
+    }
+
+    public function withScenario(string $scenario, Closure $callback): mixed
+    {
+        $oldScenario = $this->getScenario();
+
+        try {
+            $this->useScenario($scenario);
+
+            return $callback();
+        } finally {
+            $this->useScenario($oldScenario);
+        }
     }
 
     public function getScenario(): string
