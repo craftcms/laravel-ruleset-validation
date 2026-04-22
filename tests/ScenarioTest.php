@@ -44,9 +44,9 @@ it('restores the previous scenario when the callback throws', function () {
 
     expect(function () use ($ruleset) {
         $ruleset->withScenario('default', function (): void {
-            throw new \RuntimeException('Boom');
+            throw new RuntimeException('Boom');
         });
-    })->toThrow(\RuntimeException::class);
+    })->toThrow(RuntimeException::class);
 
     expect($ruleset->getScenario())->toBe('none')
         ->and($ruleset->validate())->toBe([]);
