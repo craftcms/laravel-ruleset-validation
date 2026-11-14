@@ -170,13 +170,13 @@ class Ruleset
     }
 
     /**
-     * Limit the next validation-related call to the given attributes.
+     * Limit validation to the given attributes, or validate all attributes again when `null` is given.
      *
-     * @param  array<string>|string  $attributes
+     * @param  array<string>|string|null  $attributes
      */
-    public function only(array|string $attributes): static
+    public function only(array|string|null $attributes): static
     {
-        $this->validationAttributes = Arr::wrap($attributes);
+        $this->validationAttributes = $attributes === null ? null : Arr::wrap($attributes);
         $this->validator = null;
 
         return $this;

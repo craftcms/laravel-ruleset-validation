@@ -46,10 +46,12 @@ it('passes the requested attributes into prepareForValidation', function () {
         ->and($request->input('slug'))->toBe('  untouched-slug  ');
 });
 
-it('requires only scopes to specify one or more attributes', function () {
+it('validates all attributes again after only(null)', function () {
     $ruleset = (new MultiFieldValidatable([
         'title' => 'Valid title',
     ]))->ruleset;
 
-    $ruleset->only(null);
-})->throws(TypeError::class);
+    expect($ruleset->only(['title'])->passes())->toBeTrue()
+        ->and($ruleset->only(null)->passes())->toBeFalse()
+        ->and($ruleset->getValidator()->errors()->keys())->toBe(['slug']);
+});
